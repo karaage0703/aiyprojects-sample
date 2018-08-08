@@ -15,7 +15,7 @@ $ sudo pip3 install slacker
 
 
 # Licence
-This software is released under the MIT License, see LICENSE.
+This software is released under the Apache License, see LICENSE.
 
 
 # References
