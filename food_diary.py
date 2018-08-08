@@ -25,6 +25,7 @@ leds = Leds()
 RED = (0xFF, 0x00, 0x00)
 GREEN = (0x00, 0xFF, 0x00)
 BLUE = (0x00, 0x00, 0xFF)
+WHITE = (0xFF, 0xFF, 0xFF)
 
 def run():
     print("beep sound")
@@ -53,16 +54,19 @@ def run():
     print("post to slack")
     slack.files.upload(photo_filename, channels='#dish', title=dish_name)
 
-    leds.update(Leds.rgb_off())
+    leds.update(Leds.rgb_on(WHITE))
 
 def main():
     button = Button(BUTTON_GPIO)
     button.when_pressed = run
 
+    leds.update(Leds.rgb_on(WHITE))
+
     try:
         while True:
             pass
     except KeyboardInterrupt:
+        leds.update(Leds.rgb_off())
         pass
 
 if __name__ == '__main__':
